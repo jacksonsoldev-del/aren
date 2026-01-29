@@ -1,4 +1,5 @@
 import { Star, Quote } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const testimonials = [
   {
@@ -40,55 +41,56 @@ const TestimonialsSection = () => {
     <section id="testimoni" className="section-padding">
       <div className="container-max">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-accent font-medium text-sm uppercase tracking-wider">
-            Testimoni
-          </span>
-          <h2 className="heading-secondary text-foreground mt-2 mb-4">
-            Apa Kata Pelanggan Kami?
-          </h2>
-          <p className="text-muted-foreground">
-            Kepuasan pelanggan adalah prioritas utama kami. Berikut pengalaman mereka dengan produk kami.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-accent font-medium text-sm uppercase tracking-wider">
+              Testimoni
+            </span>
+            <h2 className="heading-secondary text-foreground mt-2 mb-4">
+              Apa Kata Pelanggan Kami?
+            </h2>
+            <p className="text-muted-foreground">
+              Kepuasan pelanggan adalah prioritas utama kami. Berikut pengalaman mereka dengan produk kami.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="bg-card rounded-2xl p-6 shadow-soft hover:shadow-medium transition-shadow"
-            >
-              {/* Quote Icon */}
-              <Quote className="w-8 h-8 text-accent/30 mb-4" />
+          {testimonials.map((testimonial, index) => (
+            <ScrollReveal key={testimonial.id} delay={index * 0.1}>
+              <div className="bg-card rounded-2xl p-6 shadow-soft hover:shadow-medium transition-shadow h-full">
+                {/* Quote Icon */}
+                <Quote className="w-8 h-8 text-accent/30 mb-4" />
 
-              {/* Rating */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-golden text-golden" />
-                ))}
-              </div>
-
-              {/* Content */}
-              <p className="text-foreground/90 mb-6 leading-relaxed">
-                "{testimonial.content}"
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <span className="text-accent font-semibold">
-                    {testimonial.name.charAt(0)}
-                  </span>
+                {/* Rating */}
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-golden text-golden" />
+                  ))}
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.role} • {testimonial.location}
-                  </p>
+
+                {/* Content */}
+                <p className="text-foreground/90 mb-6 leading-relaxed">
+                  "{testimonial.content}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                    <span className="text-accent font-semibold">
+                      {testimonial.name.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {testimonial.role} • {testimonial.location}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
